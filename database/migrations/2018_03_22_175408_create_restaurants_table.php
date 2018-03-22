@@ -18,7 +18,7 @@ class CreateRestaurantsTable extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('localisation')->nullable();
-            $table->integer('rate');
+            $table->integer('rate')->nullable();
             $table->integer('phone');
             $table->time('openTime')->nullable();
             $table->time('closeTime')->nullable();
