@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Validator;
+use Illuminate\Support\Facades\DB;
 
 class PassportController extends Controller
 {
@@ -70,5 +71,10 @@ class PassportController extends Controller
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
+    }
+    public function getDetailsAll()
+    {
+        $allusers = DB::table('users')->get();
+        return response()->json($allusers, $this->successStatus);
     }
 }
