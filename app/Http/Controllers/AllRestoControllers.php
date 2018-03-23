@@ -13,7 +13,17 @@ use Illuminate\Support\Facades\DB;
 class AllRestoControllers extends Controller
 {
     function GetAllResto() {
-        $allusers = DB::table('restaurants')->get();
-        return response()->json($allusers);
+        $allresto = DB::table('restaurants')->get();
+        return response()->json($allresto);
+    }
+
+    function GetRestoId($id) {
+        $resto = DB::table('restaurants')->where('id', $id);
+        return response()->json($resto);
+    }
+
+    function GetRestoName($name) {
+        $resto = DB::table('restaurants')->where('name', $name);
+        return response()->json($resto);
     }
 }
