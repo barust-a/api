@@ -1,19 +1,19 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: alex
- * Date: 21/03/18
- * Time: 14:08
+ * User: paul
+ * Date: 22/03/18
+ * Time: 14:33
  */
 
 namespace App\Http\Controllers;
 use Couchbase\Document;
 use Illuminate\Support\Facades\DB;
 
-class AllUserControler extends Controller
+class AllRestoControllers extends Controller
 {
-    function GetAllUsers() {
-        $allusers = DB::table('utilisateurs')->get(); //users
+    function GetAllResto() {
+        $allusers = DB::table('restaurants')->get();
         return response()->json($allusers);
     }
 }
