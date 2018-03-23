@@ -23,10 +23,14 @@ Route::get('/users', 'AllUserControler@GetAllUsers');
 
 Route::get('/userId/{$id}', 'AllUserControler@GetUserId');
 
+Route::delete('/userId/{$id}', 'AllUserControler@DeleteUser');
+
 Route::get('/userName/{$name}', 'AllUserControler@GetUserName');
 
 Route::get('/restos', 'AllRestoControllers@GetAllResto');
 
 Route::get('/restoId/{$id}', 'AllRestoControllers@GetRestoId');
+
+Route::delete('/restoId/{id}', 'AllRestoControllers@DeleteResto');
 
 Route::get('/restoName/{$name}', 'AllRestoControllers@GetRestoName');

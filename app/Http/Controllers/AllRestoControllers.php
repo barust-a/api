@@ -26,4 +26,9 @@ class AllRestoControllers extends Controller
         $resto = DB::table('restaurants')->where('name', $name);
         return response()->json($resto);
     }
+
+    function DeleteResto($id)
+    {
+        DB::table('restaurants')->where('id', $id)->delete();
+    }
 }
