@@ -30,4 +30,8 @@ class AllRestoControllers extends Controller
     function DeleteResto($id) {
             DB::table('restaurants')->where('id', $id)->delete();
     }
+
+    function PostResto(){
+
+    }
 }

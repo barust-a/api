@@ -14,8 +14,8 @@ class AllUserControler extends Controller
 {
     function GetAllUsers()
     {
-            $allusers = DB::table('utilisateurs')->get();
-            return response()->json($allusers);
+        $allusers = DB::table('utilisateurs')->get();
+        return response()->json($allusers);
     }
 
     function GetUserId($id)
@@ -32,5 +32,6 @@ class AllUserControler extends Controller
 
     function DeleteUser($id) {
             DB::table('utilisateurs')->where('id', $id)->delete();
+            return response()->json(['success'=> 'deleted'], $this->successStatus);
     }
 }
