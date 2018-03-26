@@ -6,9 +6,12 @@
  * Time: 14:33
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
+use App\Http\Controllers\Controller;
+use App\restaurants;
 use Couchbase\Document;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class AllRestoControllers extends Controller
 {
@@ -25,5 +28,11 @@ class AllRestoControllers extends Controller
     function GetRestoName($name) {
         $resto = DB::table('restaurants')->where('name', $name);
         return response()->json($resto);
+    }
+
+    function NewResto(Request $request) {
+
+        $input = $request->all();
+        $resto = restaurants::create($input);
     }
 }

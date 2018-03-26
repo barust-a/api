@@ -13,17 +13,17 @@ use Illuminate\Support\Facades\Auth;
 class AllUserControler extends Controller
 {
     function GetAllUsers() {
-        $allusers = DB::table('utilisateurs')->get();
+        $allusers = DB::table('users')->get();
         return response()->json($allusers);
     }
 
     function GetUserId($id) {
-        $user = DB::table('utilisateurs')->where('id', $id);
+        $user = DB::table('users')->where('id', $id);
         return response()->json($user);
     }
 
     function GetUserName($name) {
-        $user = DB::table('utilisateurs')->where('name', $name);
+        $user = DB::table('users')->where('name', $name);
         return response()->json($user);
     }
 }

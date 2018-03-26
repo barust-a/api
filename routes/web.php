@@ -30,3 +30,8 @@ Route::get('/restos', 'AllRestoControllers@GetAllResto');
 Route::get('/restoId/{$id}', 'AllRestoControllers@GetRestoId');
 
 Route::get('/restoName/{$name}', 'AllRestoControllers@GetRestoName');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
