@@ -35,4 +35,15 @@ class AllRestoControllers extends Controller
         $input = $request->all();
         $resto = restaurants::create($input);
     }
+
+    function DeleteResto(Request $id) {
+       // $resto = DB::table('restaurants')->where('id', $id->id)->delete();
+        $resto = restaurants::where('id', $id->id)->delete();
+        return response()->json($resto);
+
+    }
+
+    function UpdateResto($id, Request $request) {
+        $resto = restaurants::where('id', $id)->update(['']);
+    }
 }
