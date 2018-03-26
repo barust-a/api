@@ -21,16 +21,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/users', 'AllUserControler@GetAllUsers');
 
-Route::get('/userId/{$id}', 'AllUserControler@GetUserId');
+Route::get('/users/{id}', 'AllUserControler@GetUserId')->where('name', '[0-9]+');
 
-Route::delete('/userId/{$id}', 'AllUserControler@DeleteUser');
+Route::delete('/delete-user/{id}', 'AllUserControler@DeleteUser');
 
-Route::get('/userName/{$name}', 'AllUserControler@GetUserName');
+Route::get('/userName/{name}', 'AllUserControler@GetUserName');
 
 Route::get('/restos', 'AllRestoControllers@GetAllResto');
 
-Route::get('/restoId/{$id}', 'AllRestoControllers@GetRestoId');
+Route::get('/restos/{id}', 'AllRestoControllers@GetRestoId')->where('name', '[0-9]+');
 
-Route::delete('/restoId/{id}', 'AllRestoControllers@DeleteResto');
+Route::delete('/delete-resto/{id}', 'AllRestoControllers@DeleteResto');
 
-Route::get('/restoName/{$name}', 'AllRestoControllers@GetRestoName');
+Route::get('/restoName/{name}', 'AllRestoControllers@GetRestoName');
+
+Route::get('/menus', 'MenuController@GetAllMenu');
+
+Route::get('/menus/{id}', 'MenuController@GetMenu')->where('name', '[0-9]+');
+
+Route::delete('/delete-menu/{id}', 'MenuController@DeleteMenu');
+
+Route::get('/menuResto/{id}', 'MenuController@GetRestoMenu');
