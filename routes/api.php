@@ -38,7 +38,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/avis/{id}', 'API\AvisController@GetAvis')->where('name', '[0-9]+');
     Route::delete('/delete-avis/{id}', 'API\AvisController@DeleteAvis');
     Route::get('/avisUser/{id}', 'API\AvisController@GetUserAvis');
-    Route::post('/{$id}/postcomment/', 'API\AvisController@PostAvis');
+    Route::post('/postcomment/{id}', 'API\AvisController@PostAvis');
 
 });
 

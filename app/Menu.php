@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class comments extends Model
+class Menu extends Model
 {
     protected $fillable = [
-        'id_user', 'id_resto', 'comment', 'rate'
+        'resto_id', 'name', 'description', 'price'
     ];
 }
