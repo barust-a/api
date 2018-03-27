@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 
 class AllRestoControllers extends Controller
 {
+    private $successStatus = 200;
+
     function GetAllResto()
     {
             $allresto = DB::table('restaurants')->get();
@@ -34,12 +36,6 @@ class AllRestoControllers extends Controller
             return response()->json($resto);
     }
 
-    function DeleteResto($id)
-    {
-        DB::table('restaurants')->where('id', $id)->delete();
-        return response()->json(['success'=> 'deleted'], $this->successStatus);
-    }
-
     function NewResto(Request $request) {
 
         $input = $request->all();
@@ -52,7 +48,10 @@ class AllRestoControllers extends Controller
 
     }
 
-    function UpdateResto($id, Request $request) {
-        $resto = restaurants::where('id', $id)->update(['']);
+    function updateResto(Request $request, $id)
+    {
+        $all = $request->all();
+        $article = DB::table('restaurants')->where('id', $id)->update($all);
+        return response()->json(['success'=> $article], $this->successStatus);
     }
 }

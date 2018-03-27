@@ -39,6 +39,8 @@ Route::delete('/delete-resto/{id}', 'AllRestoControllers@DeleteResto');
 
 Route::get('/restoName/{name}', 'AllRestoControllers@GetRestoName');
 
+Route::post('/uprestos/{id}','AllRestoControllers@updateResto');
+
 //menu route
 
 Route::get('/menus', 'MenuController@GetAllMenu');
