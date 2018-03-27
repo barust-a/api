@@ -38,8 +38,8 @@ class AvisController
     }
 
     function DeleteAvis($id) {
-        DB::table('comments')->where('id', $id)->delete();
-        return response()->json(['success'=> 'deleted'], $this->successStatus);
+        $avis = DB::table('comments')->where('id_comment', $id)->delete();
+        return response()->json($avis);
     }
 
     function GetRestoUserAvis($id_user, $id_resto) {
