@@ -39,10 +39,17 @@ class AllRestoControllers extends Controller
         return response()->json(['success'=> 'deleted'], $this->successStatus);
     }
 
+    function NewResto(Request $request)
+    {
+        $input = $request->all();
+        $resto = restaurants::create($input);
+        return response()->json(['success'=> $resto], $this->successStatus);
+    }
+
     function updateResto(Request $request, $id)
     {
-        $all = $request->all();
-        $article = DB::table('restaurants')->where('id', $id)->update($all);
+        $table = $request ->all();
+        $article = DB::table('restaurants')->where('id', $id)->update($table);
         return response()->json(['success'=> $article], $this->successStatus);
     }
 }

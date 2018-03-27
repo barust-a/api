@@ -34,4 +34,11 @@ class MenuController extends Controller
         DB::table('menus')->where('id', $id)->delete();
         return response()->json(['success'=> 'deleted'], $this->successStatus);
     }
+
+    function updateMenus(Request $request, $id)
+    {
+        $table = $request ->all();
+        $article = DB::table('menus')->where('id', $id)->update($table);
+        return response()->json(['success'=> $article], $this->successStatus);
+    }
 }

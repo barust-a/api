@@ -41,7 +41,9 @@ Route::get('/restoName/{name}', 'AllRestoControllers@GetRestoName');
 
 Route::post('/uprestos/{id}','AllRestoControllers@updateResto');
 
-//menu route
+Route::post('/newresto/', 'AllRestoControllers@NewResto');
+
+//Menu route
 
 Route::get('/menus', 'MenuController@GetAllMenu');
 
