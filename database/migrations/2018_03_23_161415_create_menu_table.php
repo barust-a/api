@@ -14,7 +14,9 @@ class CreateMenuTable extends Migration
     public function up()
     {
         Schema::create('menus', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
+            $table->unsignedInteger('resto_id');
+            $table->foreign('resto_id')->references('id')->on('restaurants');
             $table->string('name');
             $table->string('description');
             $table->integer('price');
