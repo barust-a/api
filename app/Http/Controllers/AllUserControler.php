@@ -28,7 +28,7 @@ class AllUserControler extends Controller
     }
 
     function DeleteUser($id) {
-            DB::table('utilisateurs')->where('id', $id)->delete();
+            DB::table('users')->where('id', $id)->delete();
             return response()->json(['success'=> 'deleted'], $this->successStatus);
     }
 }
