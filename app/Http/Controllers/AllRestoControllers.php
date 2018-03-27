@@ -42,15 +42,7 @@ class AllRestoControllers extends Controller
     function updateResto(Request $request, $id)
     {
         $all = $request->all();
-        return response()->json($all);
-        /*$table = [
-            'nom' => $all['nom'],
-            'email' => $all['email'],
-            'pays' => $all['pays'],
-            'ville' => $all['ville'],
-            'code_postal' => ['code_postal']
-        ];
-        $article = DB::table('restaurants')->where('id', $id)->update($table);
-        return response()->json(['success'=> $article], $this->successStatus);*/
+        $article = DB::table('restaurants')->where('id', $id)->update($all);
+        return response()->json(['success'=> $article], $this->successStatus);
     }
 }
