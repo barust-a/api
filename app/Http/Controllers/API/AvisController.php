@@ -15,43 +15,42 @@ class AvisController
 {
     function GetAllAvis()
     {
-        $allmenus = DB::table('avis')->get();
+        $allmenus = DB::table('comments')->get();
         return response()->json($allmenus);
     }
 
     function GetAvis($id)
     {
-        $user = DB::table('avis')->where('id', $id)->get();
+        $user = DB::table('comments')->where('id_comment', $id)->get();
         return response()->json($user);
     }
 
     function GetRestoAvis($id)
     {
-        $user = DB::table('avis')->where('id_resto', $id)->get();
+        $user = DB::table('comments')->where('id_resto', $id)->get();
         return response()->json($user);
     }
 
     function GetUserAvis($id)
     {
-        $user = DB::table('avis')->where('id_user', $id)->get();
+        $user = DB::table('comments')->where('id_user', $id)->get();
         return response()->json($user);
     }
 
     function DeleteAvis($id) {
-        DB::table('avis')->where('id', $id)->delete();
+        DB::table('comments')->where('id', $id)->delete();
         return response()->json(['success'=> 'deleted'], $this->successStatus);
     }
 
     function GetRestoUserAvis($id_user, $id_resto) {
-        $user = DB::table('avis')->where('id_user', $id_user)->where('id_resto', $id_resto)->get();
+        $user = DB::table('comments')->where('id_user', $id_user)->where('id_resto', $id_resto)->get();
         return response()->json($user);
     }
 
-    function PostAvis(Request $req) {
+    function PostAvis(Request $req, $id_resto) {
         if (Auth::check()) {
             $userId = Auth::id();
         }
-        $id_resto = restaurants::id();
         $comment = comments::create(['id_user' => $userId, 'id_resto' => $id_resto,
             'comment' => $req->comment, 'rate' => $req->rate]);
         return response()->json($comment);

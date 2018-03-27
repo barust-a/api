@@ -27,6 +27,7 @@ Route::get('/restos', 'API\AllRestoControllers@GetAllResto');
 Route::get('/restos/{id}', 'API\AllRestoControllers@GetRestoId')->where('name', '[0-9]+');
 Route::delete('/delete-resto/{id}', 'API\AllRestoControllers@DeleteResto');
 Route::get('/restoName/{name}', 'API\AllRestoControllers@GetRestoName');
+Route::post('/upresto/{id}','API\AllRestoControllers@updateResto');
 
 
 Route::group(['middleware' => 'auth:api'], function(){
@@ -36,7 +37,6 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/avis', 'API\AvisController@GetAllAvis');
     Route::get('/avis/{id}', 'API\AvisController@GetAvis')->where('name', '[0-9]+');
     Route::delete('/delete-avis/{id}', 'API\AvisController@DeleteAvis');
-    Route::get('/avisResto/{id}', 'API\AvisController@GetRestoAvis');
     Route::get('/avisUser/{id}', 'API\AvisController@GetUserAvis');
     Route::post('/{$id}/postcomment/', 'API\AvisController@PostAvis');
 
@@ -52,40 +52,31 @@ Route::delete('/delete-user/{$id}', 'AllUserControler@DeleteUser');
 
 Route::get('/userName/{name}', 'AllUserControler@GetUserName');
 
-//Resto Route
-
-Route::get('/restos', 'AllRestoControllers@GetAllResto');
-
-Route::get('/restos/{id}', 'AllRestoControllers@GetRestoId')->where('name', '[0-9]+');
-
-Route::delete('/delete-resto/{id}', 'AllRestoControllers@DeleteResto');
-
-Route::get('/restoName/{name}', 'AllRestoControllers@GetRestoName');
-
-Route::post('/uprestos/{id}','AllRestoControllers@updateResto');
-
 //menu route
 
-Route::get('/menus', 'MenuController@GetAllMenu');
+Route::get('/menus', 'API\MenuController@GetAllMenu');
 
-Route::get('/menus/{id}', 'MenuController@GetMenu')->where('name', '[0-9]+');
+Route::get('/menu/{id}', 'API\MenuController@GetMenu')->where('name', '[0-9]+');
 
-Route::delete('/delete-menu/{id}', 'MenuController@DeleteMenu');
+Route::delete('/delete-menu/{id}', 'API\MenuController@DeleteMenu');
 
-Route::get('/menuResto/{id}', 'MenuController@GetRestoMenu');
+Route::get('/menuResto/{id}', 'API\MenuController@GetRestoMenu');
+
+Route::post('newmenu','API\MenuController@NewMenu');
+Route::post('upmenu/{id}','API\MenuController@updateMenu');
 
 
 //Avis Route
 
-Route::get('/avis', 'AvisController@GetAllAvis');
+Route::get('/avis', 'API\AvisController@GetAllAvis');
 
-Route::get('/avis/{id}', 'AvisController@GetAvis')->where('name', '[0-9]+');
+Route::get('/avis/{id}', 'API\AvisController@GetAvis')->where('name', '[0-9]+');
 
-Route::delete('/delete-avis/{id}', 'AvisController@DeleteAvis');
+Route::delete('/delete-avis/{id}', 'API\AvisController@DeleteAvis');
 
-Route::get('/avisResto/{id}', 'AvisController@GetRestoAvis');
+Route::get('/avisResto/{id}', 'API\AvisController@GetRestoAvis');
 
-Route::get('/avisUser/{id}', 'AvisController@GetUserAvis');
+Route::get('/avisUser/{id}', 'API\AvisController@GetUserAvis');
 
-Route::get('/avisUserResto/{id_user}/{id_resto}', 'AvisController@GetRestoUserAvis');
+Route::get('/avisUserResto/{id_user}/{id_resto}', 'API\AvisController@GetRestoUserAvis');
 

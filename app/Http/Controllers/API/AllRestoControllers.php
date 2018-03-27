@@ -14,6 +14,7 @@ use Couchbase\Document;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
+
 class AllRestoControllers extends Controller
 {
     private $successStatus = 200;
