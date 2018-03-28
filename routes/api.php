@@ -13,9 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
-//    return $request->user();
-//});
 
 Route::post('login', 'API\PassportController@login');
 Route::post('register', 'API\PassportController@register');
@@ -28,7 +25,7 @@ Route::get('/restos/{id}', 'API\AllRestoControllers@GetRestoId')->where('name', 
 Route::delete('/delete-resto/{id}', 'API\AllRestoControllers@DeleteResto');
 Route::get('/restoName/{name}', 'API\AllRestoControllers@GetRestoName');
 Route::post('/upresto/{id}','API\AllRestoControllers@updateResto');
-
+Route::get('/restosBest', 'API\AllRestoControllers@GetBest');
 
 Route::group(['middleware' => 'auth:api'], function(){
 

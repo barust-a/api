@@ -25,6 +25,12 @@ class AllRestoControllers extends Controller
             return response()->json($allresto);
     }
 
+    function GetBest()
+    {
+        $sortBest = DB::table('restaurants')->orderBy('rate', 'desc')->get();
+        return response()->json($sortBest);
+    }
+
     function GetRestoId($id)
     {
             $resto = DB::table('restaurants')->where('id', $id)->get();
@@ -66,4 +72,6 @@ class AllRestoControllers extends Controller
         $article = DB::table('restaurants')->where('id', $id)->update($all);
         return response()->json(['success'=> $article], $this->successStatus);
     }
+
+
 }
