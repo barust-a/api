@@ -40,6 +40,7 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::get('/avisUser/{id}', 'API\AvisController@GetUserAvis');
     Route::post('/postcomment/{id}', 'API\AvisController@PostAvis');
 
+
 });
 
 //User Route

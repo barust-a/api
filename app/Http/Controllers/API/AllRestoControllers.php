@@ -13,7 +13,7 @@ use App\restaurants;
 use Couchbase\Document;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-
+use Validator;
 
 class AllRestoControllers extends Controller
 {
@@ -39,8 +39,19 @@ class AllRestoControllers extends Controller
 
     function NewResto(Request $request) {
 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required',
+            'phone' => 'required|digits:10',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
+
         $input = $request->all();
         $resto = restaurants::create($input);
+        return response()->json($resto);
     }
 
     function DeleteResto(Request $id) {

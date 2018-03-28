@@ -41,9 +41,20 @@ class MenuController extends Controller
     }
 
     function NewMenu(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'resto_id' => 'required|integer',
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error'=>$validator->errors()], 401);
+        }
 
         $input = $request->all();
         $menu = Menu::create($input);
+        return response()->json($menu);
     }
 
     function updateMenu(Request $request, $id)
