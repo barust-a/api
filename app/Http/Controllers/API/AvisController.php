@@ -54,6 +54,5 @@ class AvisController
         $comment = comments::create(['id_user' => $userId, 'id_resto' => $id_resto,
             'comment' => $req->comment, 'rate' => $req->rate]);
         return response()->json($comment);
-
     }
 }

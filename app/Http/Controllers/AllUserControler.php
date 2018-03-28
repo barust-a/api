@@ -18,12 +18,12 @@ class AllUserControler extends Controller
     }
 
     function GetUserId($id) {
-        $user = DB::table('users')->where('id', $id);
+        $user = DB::table('users')->where('id', $id)->get();
         return response()->json($user);
     }
 
     function GetUserName($name) {
-        $user = DB::table('users')->where('name', $name);
+        $user = DB::table('users')->where('name', $name)->get();
         return response()->json($user);
     }
 

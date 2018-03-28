@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth:api'], function(){
 
 Route::get('/users', 'AllUserControler@GetAllUsers');
 
-Route::get('/users/{id}', 'AllUserControler@GetUserId')->where('name', '[0-9]+');
+Route::get('/users/{id}', 'AllUserControler@GetUserId')->where('id', '[0-9]+');
 
 Route::delete('/delete-user/{$id}', 'AllUserControler@DeleteUser');
 
@@ -56,13 +56,14 @@ Route::get('/userName/{name}', 'AllUserControler@GetUserName');
 
 Route::get('/menus', 'API\MenuController@GetAllMenu');
 
-Route::get('/menu/{id}', 'API\MenuController@GetMenu')->where('name', '[0-9]+');
+Route::get('/menu/{id}', 'API\MenuController@GetMenu')->where('id', '[0-9]+');
 
 Route::delete('/delete-menu/{id}', 'API\MenuController@DeleteMenu');
 
 Route::get('/menuResto/{id}', 'API\MenuController@GetRestoMenu');
 
 Route::post('newmenu','API\MenuController@NewMenu');
+
 Route::post('upmenu/{id}','API\MenuController@updateMenu');
 
 
